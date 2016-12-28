@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"normal": {
+			"model": "endernet:ender_transmitter"
+		}
+	}
+}
