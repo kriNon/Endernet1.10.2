@@ -40,4 +40,11 @@ public class BlockEnderTransmitter extends Block{
     	return new TileEntityEnderTransmitter();
     }
 	
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState blockstate) {
+        TileEntityEnderTransmitter te = (TileEntityEnderTransmitter) world.getTileEntity(pos);
+        InventoryHelper.dropInventoryItems(world, pos, te);
+        super.breakBlock(world, pos, blockstate);
+    }
+
 }
