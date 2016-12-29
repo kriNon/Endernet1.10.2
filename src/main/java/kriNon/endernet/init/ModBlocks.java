@@ -20,7 +20,7 @@ public class ModBlocks {
 
 	public static void init() {
 		ender_receiver = new BlockEnderReceiver("ender_receiver", "ender_receiver");
-		ender_transmitter = new BlockEnderReceiver("ender_transmitter", "ender_transmitter");
+		ender_transmitter = new BlockEnderTransmitter("ender_transmitter", "ender_transmitter");
 
 	}
 	

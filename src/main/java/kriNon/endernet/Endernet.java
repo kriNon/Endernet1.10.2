@@ -36,6 +36,7 @@ public class Endernet {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		
+
 	}
 	
 	@EventHandler

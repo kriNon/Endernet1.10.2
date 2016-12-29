@@ -11,6 +11,8 @@ public class CommonProxy {
 	}
 	
 	public void registerTileEntities() {
+		Utils.getLogger().info("RegisterTileEntities Started");
 		GameRegistry.registerTileEntity(TileEntityEnderTransmitter.class, "ender_transmitter");
+		Utils.getLogger().info("RegisterTileEntities ender_transmitter");
 	}
 }

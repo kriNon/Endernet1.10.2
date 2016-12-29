@@ -4,6 +4,7 @@ import java.util.Random;
 
 import kriNon.endernet.Reference;
 import kriNon.endernet.tileentities.TileEntityEnderTransmitter;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -20,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockEnderTransmitter extends BlockContainer{
+public class BlockEnderTransmitter extends Block{
 	public BlockEnderTransmitter(String unlocalizedName, String registryName) {
 		super(Material.ROCK);
 		this.setUnlocalizedName(unlocalizedName);
@@ -30,29 +31,13 @@ public class BlockEnderTransmitter extends BlockContainer{
 	}
 	
 	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState blockstate) {
-	    TileEntityEnderTransmitter te = (TileEntityEnderTransmitter) world.getTileEntity(pos);
-	    InventoryHelper.dropInventoryItems(world, pos, te);
-	    super.breakBlock(world, pos, blockstate);
-	}
-
-
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-	    if (stack.hasDisplayName()) {
-	        ((TileEntityEnderTransmitter) worldIn.getTileEntity(pos)).setCustomName(stack.getDisplayName());
-	    }
+	public boolean hasTileEntity(IBlockState state){
+	return true;
 	}
 	
-	@Override
-	public boolean hasTileEntity(IBlockState state)
-	{
-		return true;
-	}
-	
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityEnderTransmitter();
-	}
+    @Override
+    public TileEntity createTileEntity(World world, IBlockState state) {
+    	return new TileEntityEnderTransmitter();
+    }
 	
 }
