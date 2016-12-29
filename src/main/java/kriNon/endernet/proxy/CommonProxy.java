@@ -11,6 +11,6 @@ public class CommonProxy {
 	}
 	
 	public void registerTileEntities() {
-		GameRegistry.registerTileEntity(TileEntityEnderTransmitter.class, "ender_transmitter_test");
+		GameRegistry.registerTileEntity(TileEntityEnderTransmitter.class, "ender_transmitter");
 	}
 }
