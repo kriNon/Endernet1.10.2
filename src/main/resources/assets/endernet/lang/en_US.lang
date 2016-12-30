@@ -2,3 +2,5 @@ tile.ender_transmitter.name=Ender Transmitter
 tile.ender_receiver.name=Ender Receiver
 
 item.tin_ingot.name=Tin Ingot
+
+container.ender_transmitter=Ender Transmitter
