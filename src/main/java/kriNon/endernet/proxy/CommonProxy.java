@@ -2,6 +2,7 @@ package kriNon.endernet.proxy;
 
 import kriNon.endernet.Endernet;
 import kriNon.endernet.handlers.GuiHandler;
+import kriNon.endernet.tileentities.TileEntityEnderReceiver;
 import kriNon.endernet.tileentities.TileEntityEnderTransmitter;
 import kriNon.endernet.util.Utils;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -16,7 +17,8 @@ public class CommonProxy {
 	public void registerTileEntities() {
 		Utils.getLogger().info("RegisterTileEntities Started");
 		GameRegistry.registerTileEntity(TileEntityEnderTransmitter.class, "ender_transmitter");
-		Utils.getLogger().info("RegisterTileEntities ender_transmitter");
+		GameRegistry.registerTileEntity(TileEntityEnderReceiver.class, "ender_receiver");
+
 	}
 	
 	public void regiserGUIHandler() {
