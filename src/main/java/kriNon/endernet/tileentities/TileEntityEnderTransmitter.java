@@ -13,10 +13,19 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 
-public class TileEntityEnderTransmitter extends TileEntity implements IInventory{
+public class TileEntityEnderTransmitter extends TileEntity implements IInventory, ITickable{
 
 	private ItemStack[] inventory;
 	private String customName;
+	private int progress;
+	
+	public int getProgress() { return progress; }
+	
+	public int getMaxProgress() {
+		if(inventory[0] == null) return 35;
+		else return 35 + ((inventory[0].stackSize - 1) * 10);
+	}
+	
 	
 	public TileEntityEnderTransmitter() {
 		this.inventory = new ItemStack[this.getSizeInventory()];
@@ -186,5 +195,12 @@ public class TileEntityEnderTransmitter extends TileEntity implements IInventory
 	    if (nbt.hasKey("CustomName", 8)) {
 	        this.setCustomName(nbt.getString("CustomName"));
 	    }
+	}
+
+	@Override
+	public void update() {
+		if(this.getStackInSlot(0) != null){
+			
+		}
 	}
 }
