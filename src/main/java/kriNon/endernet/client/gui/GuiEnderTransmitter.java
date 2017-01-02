@@ -38,8 +38,10 @@ public class GuiEnderTransmitter extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String s = this.te.getDisplayName().getUnformattedText();
+		String s2 = Integer.toString(this.te.getEndernetID());
+		
 		this.fontRendererObj.drawString(s, 88 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 30, 4210752);
+		this.fontRendererObj.drawString("ID " + s2, 6, 6, 16777215);
 	}
 
 }

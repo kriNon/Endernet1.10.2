@@ -170,8 +170,6 @@ public class TileEntityEnderReceiver extends TileEntity implements IInventory{
 	    return nbt;
 	}
 
-
-
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 	    super.readFromNBT(nbt);

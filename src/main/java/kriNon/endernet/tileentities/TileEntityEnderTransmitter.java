@@ -14,9 +14,18 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 
 public class TileEntityEnderTransmitter extends TileEntity implements IInventory, ITickable{
-
+	private int enderNetID = -1;
+	
 	private ItemStack[] inventory;
 	private String customName;
+	
+	private boolean isReceiveable = true;
+	private boolean startSending = true;
+	
+	public int getEndernetID() {return enderNetID;}
+	
+	
+	//Item Transfer Progress
 	private int progress;
 	
 	public int getProgress() { return progress; }
@@ -26,7 +35,43 @@ public class TileEntityEnderTransmitter extends TileEntity implements IInventory
 		else return 35 + ((inventory[0].stackSize - 1) * 10);
 	}
 	
+	public boolean canSendItem() {
+		return isReceiveable;
+	}
 	
+	@Override
+	public void update() {		
+		if(inventory[0] == null) progress = 0;
+		if(!canSendItem()) progress = 0;
+		if(inventory[0] != null && startSending && canSendItem()) {
+			if(progress < getMaxProgress()) {
+				progress++;
+			}
+		}
+		if(progress >= getMaxProgress()){
+			//(send item here)
+			this.setInventorySlotContents(0, null);
+			progress = 0;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//Inventory
+	
+	
+
 	public TileEntityEnderTransmitter() {
 		this.inventory = new ItemStack[this.getSizeInventory()];
 	}
@@ -179,8 +224,6 @@ public class TileEntityEnderTransmitter extends TileEntity implements IInventory
 	    return nbt;
 	}
 
-
-
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 	    super.readFromNBT(nbt);
@@ -197,10 +240,4 @@ public class TileEntityEnderTransmitter extends TileEntity implements IInventory
 	    }
 	}
 
-	@Override
-	public void update() {
-		if(this.getStackInSlot(0) != null){
-			
-		}
-	}
 }
