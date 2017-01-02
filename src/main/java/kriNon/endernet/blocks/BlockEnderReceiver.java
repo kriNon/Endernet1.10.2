@@ -2,6 +2,7 @@ package kriNon.endernet.blocks;
 
 import java.util.Random;
 
+import ibxm.Player;
 import kriNon.endernet.Endernet;
 import kriNon.endernet.Reference;
 import kriNon.endernet.handlers.GuiHandler;
@@ -19,7 +20,22 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
+
 
 public class BlockEnderReceiver extends Block{
 
@@ -31,6 +47,15 @@ public class BlockEnderReceiver extends Block{
 		this.setResistance(20);
 	}
 	
+@Override
+public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	if(!world.isRemote) {
+		TileEntityEnderReceiver te = (TileEntityEnderReceiver) world.getTileEntity(pos);
+		player.addChatComponentMessage(new TextComponentString("EnderNet ID: " + te.getEndernetID()));
+	}
+	return true;
+}
+		
 	@Override
 	public boolean hasTileEntity(IBlockState state){
 	return true;

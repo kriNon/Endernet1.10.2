@@ -14,9 +14,13 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 
 public class TileEntityEnderReceiver extends TileEntity implements IInventory{
+	
+	private int enderNetID = -1;
 
 	private ItemStack[] inventory;
 	private String customName;
+	
+	public int getEndernetID() {return enderNetID;}
 	
 	public TileEntityEnderReceiver() {
 		this.inventory = new ItemStack[this.getSizeInventory()];
