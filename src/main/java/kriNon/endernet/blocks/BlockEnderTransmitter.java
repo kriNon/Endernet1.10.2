@@ -5,6 +5,7 @@ import java.util.Random;
 import kriNon.endernet.Endernet;
 import kriNon.endernet.Reference;
 import kriNon.endernet.handlers.GuiHandler;
+import kriNon.endernet.tileentities.TileEntityEnderReceiver;
 import kriNon.endernet.tileentities.TileEntityEnderTransmitter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -23,6 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 public class BlockEnderTransmitter extends Block{
@@ -36,8 +38,15 @@ public class BlockEnderTransmitter extends Block{
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		
 		if(!worldIn.isRemote){
-			playerIn.openGui(Endernet.instance, GuiHandler.ENDER_TRANSMITTER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			if(!playerIn.isSneaking()){
+				playerIn.openGui(Endernet.instance, GuiHandler.ENDER_TRANSMITTER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+		}
+		else{
+			TileEntityEnderTransmitter te = (TileEntityEnderTransmitter) worldIn.getTileEntity(pos);
+			playerIn.addChatComponentMessage(new TextComponentString("EnderNet ID: " + te.getEndernetID()));
+			}
 		}
 		return true;
 	}

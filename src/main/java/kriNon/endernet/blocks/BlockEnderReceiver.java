@@ -48,10 +48,10 @@ public class BlockEnderReceiver extends Block{
 	}
 	
 @Override
-public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-	if(!world.isRemote) {
-		TileEntityEnderReceiver te = (TileEntityEnderReceiver) world.getTileEntity(pos);
-		player.addChatComponentMessage(new TextComponentString("EnderNet ID: " + te.getEndernetID()));
+public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	if(!worldIn.isRemote) {
+		TileEntityEnderReceiver te = (TileEntityEnderReceiver) worldIn.getTileEntity(pos);
+		playerIn.addChatComponentMessage(new TextComponentString("EnderNet ID: " + te.getEndernetID()));
 	}
 	return true;
 }
