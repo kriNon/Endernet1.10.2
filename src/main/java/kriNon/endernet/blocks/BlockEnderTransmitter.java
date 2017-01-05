@@ -67,8 +67,8 @@ public class BlockEnderTransmitter extends Block{
     public void breakBlock(World world, BlockPos pos, IBlockState blockstate) {
         TileEntityEnderTransmitter te = (TileEntityEnderTransmitter) world.getTileEntity(pos);
         InventoryHelper.dropInventoryItems(world, pos, te);
-        super.breakBlock(world, pos, blockstate);
         EnderRegistry.instance.unregister(te.getEndernetID());
+        super.breakBlock(world, pos, blockstate);
     }
 
 }
