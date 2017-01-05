@@ -5,8 +5,10 @@ import java.util.Random;
 import kriNon.endernet.Endernet;
 import kriNon.endernet.Reference;
 import kriNon.endernet.handlers.GuiHandler;
+import kriNon.endernet.lib.EnderRegistry;
 import kriNon.endernet.tileentities.TileEntityEnderReceiver;
 import kriNon.endernet.tileentities.TileEntityEnderTransmitter;
+import kriNon.endernet.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
@@ -66,6 +68,7 @@ public class BlockEnderTransmitter extends Block{
         TileEntityEnderTransmitter te = (TileEntityEnderTransmitter) world.getTileEntity(pos);
         InventoryHelper.dropInventoryItems(world, pos, te);
         super.breakBlock(world, pos, blockstate);
+        EnderRegistry.instance.unregister(te.getEndernetID());
     }
 
 }
