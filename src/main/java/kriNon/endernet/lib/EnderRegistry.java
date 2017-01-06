@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import com.google.gson.Gson;
+
 import kriNon.endernet.Endernet;
 
 public class EnderRegistry {

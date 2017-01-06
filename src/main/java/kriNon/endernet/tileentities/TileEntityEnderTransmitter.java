@@ -43,9 +43,6 @@ public class TileEntityEnderTransmitter extends TileEntity implements IInventory
 	
 	@Override
 	public void update() {
-		if(!this.worldObj.isRemote && ea == 0){
-			 EnderRegistry.instance.register(this);
-		}
 		if(inventory[0] == null) progress = 0;
 		if(!canSendItem()) progress = 0;
 		if(inventory[0] != null && startSending && canSendItem()) {
