@@ -6,7 +6,6 @@ import ibxm.Player;
 import kriNon.endernet.Endernet;
 import kriNon.endernet.Reference;
 import kriNon.endernet.handlers.GuiHandler;
-import kriNon.endernet.lib.EnderRegistry;
 import kriNon.endernet.tileentities.TileEntityEnderReceiver;
 import kriNon.endernet.tileentities.TileEntityEnderTransmitter;
 import net.minecraft.block.Block;

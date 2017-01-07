@@ -1,8 +1,6 @@
 package kriNon.endernet.tileentities;
 
 import java.util.ArrayList;
-
-import kriNon.endernet.lib.EnderRegistry;
 import kriNon.endernet.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -16,7 +14,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 
 public class TileEntityEnderTransmitter extends TileEntity implements IInventory, ITickable{
-	private int ea;
+	private int enderNetID = -1;
 	
 	private ItemStack[] inventory;
 	private String customName;
@@ -24,7 +22,7 @@ public class TileEntityEnderTransmitter extends TileEntity implements IInventory
 	private boolean isReceiveable = true;
 	private boolean startSending = true;
 	
-	public int getEndernetID() {return ea;}
+	public int getEndernetID() {return enderNetID;}
 	
 	
 	//Item Transfer Progress
@@ -42,7 +40,7 @@ public class TileEntityEnderTransmitter extends TileEntity implements IInventory
 	}
 	
 	@Override
-	public void update() {
+	public void update() {		
 		if(inventory[0] == null) progress = 0;
 		if(!canSendItem()) progress = 0;
 		if(inventory[0] != null && startSending && canSendItem()) {
@@ -222,7 +220,7 @@ public class TileEntityEnderTransmitter extends TileEntity implements IInventory
 	    if (this.hasCustomName()) {
 	        nbt.setString("CustomName", this.getCustomName());
 	    }
-	    nbt.setInteger("ea", ea);	    
+	    
 	    return nbt;
 	}
 
@@ -240,11 +238,6 @@ public class TileEntityEnderTransmitter extends TileEntity implements IInventory
 	    if (nbt.hasKey("CustomName", 8)) {
 	        this.setCustomName(nbt.getString("CustomName"));
 	    }
-	    if(nbt.hasKey("ea")){
-	    	ea = nbt.getInteger("ea");
-	    	EnderRegistry.instance.set(ea, this);
-	    } else {
-	    	ea = EnderRegistry.instance.register(this);
-	    }
 	}
+
 }
