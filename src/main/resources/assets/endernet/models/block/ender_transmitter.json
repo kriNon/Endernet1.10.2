@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/orientable",
+	"textures": {
+        "top": "endernet:blocks/ender_transmitter_top",
+        "front": "endernet:blocks/ender_transmitter_side",
+        "side": "endernet:blocks/ender_transmitter_side"
+	}
+}

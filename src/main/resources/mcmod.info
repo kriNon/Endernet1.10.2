@@ -1,0 +1,16 @@
+[
+{
+  "modid": "endernet",
+  "name": "Endernet",
+  "description": "The trading & transfer revolution",
+  "version": "1.0.0",
+  "mcversion": "1.10.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["kriNon"],
+  "credits": "kriNon",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
